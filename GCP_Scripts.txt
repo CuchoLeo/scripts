@@ -1,0 +1,25 @@
+## Copiar de GCS a GCS
+
+# Crear tabla en dataset desde json
+bq mkdef \
+--noautodetect \
+--source_format=NEWLINE_DELIMITED_JSON \
+"gs://input-dev-test01/cat_tipo_acbi.json" \
+aviso.prueba
+
+## Obtener ddl de una tabla especifica
+bq query --nouse_legacy_sql \
+'SELECT
+   table_name, ddl
+ FROM
+   `gcp00vrodriguez-323115`.aviso.INFORMATION_SCHEMA.TABLES
+ WHERE
+   table_name="consumo_pagos_fijos"'
+
+   ### Desde BigQuery
+SELECT
+   table_name, ddl
+  FROM
+    `projectid`.dataset.INFORMATION_SCHEMA.TABLES
+  WHERE
+    table_name="nombre_tabla"
