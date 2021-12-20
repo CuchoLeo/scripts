@@ -1,0 +1,35 @@
+--drop view vw_var_promotor
+--ALTER TABLE seg.var_promotor ALTER COLUMN total_incentivo_generado TYPE numeric(12, 6) USING total_incentivo_generado::numeric;
+-- seg.vw_var_promotor source
+
+CREATE OR REPLACE VIEW seg.vw_var_promotor
+AS SELECT var_promotor.numero_nomina,
+    var_promotor.titulo_puesto,
+    var_promotor.periodo,
+    var_promotor.total_colocacion_grupos_nuevos,
+    var_promotor.total_colocaciones_creditos,
+    var_promotor.total_porc_ficha_cerrada_puntual,
+    var_promotor.total_colocacion_venta_cruzada,
+    var_promotor.total_incremento_neto_clientes,
+    var_promotor.total_porc_mora_8_a_90_dias,
+    var_promotor.total_incentivo_generado,
+    var_promotor.numero_mes_debajo_mora_8_a_90,
+    var_promotor.complemento_limite_mora,
+    var_promotor.fecha_creacion,
+    var_promotor.usuario_creacion,
+    var_promotor.fecha_ult_modif,
+    var_promotor.usuario_ult_modif,
+    var_promotor.id_moneda,
+    var_promotor.id_pais,
+    var_promotor.id_empresa,
+    var_promotor.id_sistema
+   FROM seg.var_promotor;
+
+-- Permissions
+
+ALTER TABLE seg.vw_var_promotor OWNER TO cloudsqlsuperuser;
+GRANT ALL ON TABLE seg.vw_var_promotor TO cloudsqlsuperuser;
+GRANT INSERT, UPDATE, SELECT ON TABLE seg.vw_var_promotor TO seg_api;
+GRANT INSERT, UPDATE, SELECT ON TABLE seg.vw_var_promotor TO seg_etl;
+GRANT SELECT ON TABLE seg.vw_var_promotor TO seg_admin;
+GRANT SELECT ON TABLE seg.vw_var_promotor TO seg_tester;

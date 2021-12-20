@@ -1,0 +1,6 @@
+## Ambientes
+--conda activate nombre_ambiente
+base                     /opt/anaconda3
+ds                       /opt/anaconda3/envs/ds
+etl                      /opt/anaconda3/envs/etl
+tf2                      /opt/anaconda3/envs/tf2
