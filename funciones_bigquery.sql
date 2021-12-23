@@ -24,4 +24,8 @@ bq mk --table mydataset.mytable ./myschema.json
 bq mk --table ent-qas-datawarecloud:ent_qas_operacional.cat_tipo_acbi /home/p_victor_ry/cat_tipo_acbi.json
 #################################
 --crear tabla particionada por fecha a partir de Jason
-bq mk --table   --schema /home/p_victor_ry/BQ_person_table.json /   --time_partitioning_field primera_fecha_limite_pago   --time_partitioning_type DAY   ent-qas-datawarecloud:ent_qas_operacional.TF_VF_SEG_FIRST_PAYMENT_PERSON
+bq mk --table  \
+ --schema /home/p_victor_ry/json_schemas/vw_persona.json  \
+ --time_partitioning_field fecha_creacion_oferta  \
+ --time_partitioning_type DAY
+ ent-dev-datawarecloud:ent_dev_landing_fdo.persona
